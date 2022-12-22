@@ -139,10 +139,8 @@ $$0.56$$
 
 Covariance matrix:
 ```math
-\bigg[\begin{matrix} 1.80233  & 0.419065\\
-0.419065 & 2.15444 \\
-\end{matrix}\bigg]
-```math
+\bigg[\begin{matrix} 1.80233  & 0.419065\\0.419065 & 2.15444\\\end{matrix}\bigg]
+```
 
 
 
@@ -156,9 +154,7 @@ $$0.44$$
 
 Covariance matrix:
 ```math
-\bigg[\begin{matrix} 0.797828  & -0.0779682\\
--0.0779682 & 0.884848 \\
-\end{matrix}\bigg]
+\bigg[\begin{matrix} 0.797828  & -0.0779682\\-0.0779682 & 0.884848 \\\end{matrix}\bigg]
 ```
 
 ARI: 1.0
