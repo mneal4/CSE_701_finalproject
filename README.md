@@ -165,9 +165,11 @@ The data used was simulated from a two dimensional, two component Gaussian mixtu
 Group 1:
 $$ \pi_1 = 0.4$$
 $$ \mu_1 = [1,1]$$
-$$ \Sigma_1 =\begin{matrix}1 & 0\\
+```math
+\Sigma_1 =\begin{matrix}1 & 0\\
 0& 1\\
-\end{matrix}$$
+\end{matrix}
+```
 
 Group 2:
 $$ \pi_1 = 0.6$$
