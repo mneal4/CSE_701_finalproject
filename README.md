@@ -2,7 +2,7 @@
 Mackenzie Neal
 
 ## Introduction
-This program implements the EM algorithm in order to perform Gaussian mixture model-based clustering. This program uses two classes in order to do so. The first, is a matrix class to allow for matrices to be constructed and various matrix operations and functions to be implemented. The second class, called EMalgo, is derived from the matrix class so that matrix operations and functions can be used by EMalgo. This class contains functions need to perform and assess the EM algorithm.
+This program implements the EM algorithm in order to perform Gaussian mixture model-based clustering. This program uses two classes in order to do so. The first is a matrix class to allow for matrices to be constructed and various matrix operations and functions to be implemented. The second class, called EMalgo, is derived from the matrix class so that matrix operations and functions can be used by EMalgo. This class contains functions needed to perform and assess the EM algorithm.
 
 ## Background Information
 
@@ -30,10 +30,10 @@ E Step:
 Given the model parameters calculate the probability of observation i belong to group g, using Bayesian statistics. This is done via the following formula:
 
 ```math
-\hat{z}_{ig} = \frac{\hat{\pi}_g \phi(x_i|\hat{\mu}_g,\hat{\Sigma}_g)}{ \sum_{h=1}^{G}\hat{\pi}_g \phi(x_i|\hat{\mu}_h,\hat{\Sigma}_h)}
+\hat{z}_{ig} = \frac{\hat{\pi}_g \phi(x_i|\hat{\mu}_g,\hat{\Sigma}_g)}{ \sum_{h=1}^{G}\hat{\pi}_g \phi(x_i|\hat{\mu}_h,\hat{\Sigma}_h).}
 ```
 
-Once cluster memberships are estimated then maximization of the log likelihood can be performed by obtaining the following MLE's.
+Once cluster memberships are estimated then maximization of the log-likelihood can be performed by obtaining the following MLE's.
 
 M Step:
 
@@ -43,9 +43,9 @@ $$\hat{\mu}_{g} = \frac{1}{n_g}\sum_{i=1}^n \hat{z}_{ig}x_i$$
 
 $$\hat{\Sigma}_g = \frac{1}{n_g}\sum_{i=1}^n \hat{z}_{ig}(x_i-\hat{\mu}_g)(x_i-\hat{\mu}_g)^t$$
 
-The algorithm then iterates between these two steps until convergence of the log-likelihood is achieved. 
+The algorithm iterates between these two steps until convergence of the log-likelihood is achieved. 
 
-All previous background information comes from [Expectation-Maximization Algorithm Step-by-Step](https://medium.com/analytics-vidhya/expectation-maximization-algorithm-step-by-step-30157192de9f) and [Mixture Model-Based Classification](https://www.taylorfrancis.com/books/mono/10.1201/9781315373577/mixture-model-based-classification-paul-mcnicholas).
+All the above background information comes from [Expectation-Maximization Algorithm Step-by-Step](https://medium.com/analytics-vidhya/expectation-maximization-algorithm-step-by-step-30157192de9f) and [Mixture Model-Based Classification](https://www.taylorfrancis.com/books/mono/10.1201/9781315373577/mixture-model-based-classification-paul-mcnicholas).
 
 ### Adjusted Rand Index (ARI)
 
@@ -58,7 +58,7 @@ Thus, ARI equals one when there is perfect agreement between partitions and is n
 ## Program Structure
 
 ### Matrix Class
-Contains constructors for creating a matrix object. These objects 1D arrays but can be assessed as matrix elements normally would be i.e. A(1,2) due to the overloaded () operator. The following overloaded operators and member functions are included in the class.
+Contains constructors for creating a matrix object. These objects are 1D arrays but the elements of said object can be assessed as matrix elements normally would be i.e. A(1,2). The following overloaded operators and member functions are included in the class.
 1. Matrix Addition (+, +=)
 2. Matrix Subtraction (-, -=)
 3. Matrix Negation (-)
@@ -78,7 +78,7 @@ Contains constructors for creating a matrix object. These objects 1D arrays but 
 17. transpose(): To obtain the transpose of a matrix.
 18. zero_matrix(): To obtain a zero matrix.
 
-This class contains three private members rows, cols, elements to store the number of rows, number of columns, and matrix elements.
+This class contains three private members rows, cols, and elements to store the number of rows, the number of columns, and the matrix elements.
 
 ### EMalgo Class
 This is a derived class from the matrix class to allow the functions in this class to inherit the matrix objects. The functions included in this class are listed below.
@@ -95,13 +95,13 @@ This is a derived class from the matrix class to allow the functions in this cla
 
 ## Running the Program
 
-The user has three options when running the program. The first is that no arguments are provided, in this case, the program will print a description of the program. The second is when the user has data they want to cluster on but they do not have the true classifications to compare to, in which case, the following four inputs (executable + three user-defined inputs) are needed.
+The user has three options when running the program. The first is that no arguments are provided, in this case, a description of the program will be printed. The second is when the user has data they want to cluster on but they do not have the true classifications to compare to, in which case, the following four inputs (executable + three user-defined inputs) are needed in the following order.
 1. Executable name (i.e. ./finalproject)
 2. The data (.csv file) you are clustering on (these must be numeric)
 3. The number of clusters (this must be a positive integer)
 4. Name of the file you want to export the estimated clusters to (i.e. output.txt)
 
-If the user does have the true clusters than five inputs (executable + four user-defined inputs) are needed, as follows.
+If the user does have the true clusters than five inputs (executable + four user-defined inputs) are needed, as follows in the following order.
 1. Executable name (i.e. ./finalproject)
 2. The data (.csv file) you are clustering on (these must be numeric)
 3. The number of clusters (this must be a positive integer)
