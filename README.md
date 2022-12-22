@@ -30,7 +30,7 @@ E Step:
 Given the model parameters calculate the probability of observation i belong to group g, using Bayesian statistics. This is done via the following formula:
 
 ```math
-\hat{z}_{ig} = \frac{\hat{\pi}_g \phi(x_i|\hat{\mu}_g,\hat{\Sigma}_g)}{\sum_{h=1}^{G}\hat{\pi}_g \phi(x_i|\hat{\mu}_h,\hat{\Sigma}_h)}
+\hat{z}_{ig} = \frac{\hat{\pi}_g \phi(x_i|\hat{\mu}_g,\hat{\Sigma}_g)}{ \sum_{h=1}^{G}\hat{\pi}_g \phi(x_i|\hat{\mu}_h,\hat{\Sigma}_h)}
 ```
 
 Once cluster memberships are estimated then maximization of the log likelihood can be performed by obtaining the following MLE's.
@@ -45,7 +45,15 @@ $$\hat{\Sigma}_g = \frac{1}{n_g}\sum_{i=1}^n \hat{z}_{ig}(x_i-\hat{\mu}_g)(x_i-\
 
 The algorithm then iterates between these two steps until convergence of the log-likelihood is achieved. 
 
-All background information comes from [Expectation-Maximization Algorithm Step-by-Step](https://medium.com/analytics-vidhya/expectation-maximization-algorithm-step-by-step-30157192de9f) and [Mixture Model-Based Classification](https://www.taylorfrancis.com/books/mono/10.1201/9781315373577/mixture-model-based-classification-paul-mcnicholas).
+All previous background information comes from [Expectation-Maximization Algorithm Step-by-Step](https://medium.com/analytics-vidhya/expectation-maximization-algorithm-step-by-step-30157192de9f) and [Mixture Model-Based Classification](https://www.taylorfrancis.com/books/mono/10.1201/9781315373577/mixture-model-based-classification-paul-mcnicholas).
+
+### Adjusted Rand Index (ARI)
+
+ARI is a performance measure used to compare the similarity between two partitions. Prior to ARI, the Rand index (RI) was used to compare partitions [Rand, 1971](https://www.jstor.org/stable/2284239#metadata_info_tab_contents):
+$$RI = \frac{\text{number of agreements}}{\text{number of agreements + number of disagreements}}$$
+ARI was proposed as to force the index to have expected value of zero under random assignment [Hubert and Arabie, 1985](https://link.springer.com/article/10.1007/BF01908075). The corrected index can be found below.
+$$ARI = \frac{\text{RI} − \text{Expected RI}}{\text{Max RI} − \text{Expected RI}}$$
+Thus, ARI equals one when there is perfect agreement between partitions and is negative when the assignment is worse than random.
 
 ## Program Structure
 
