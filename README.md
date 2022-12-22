@@ -131,7 +131,7 @@ $$ \begin{matrix} 0 & 1\\
 Group 1 
 
 Mean vector:
-$$[4.93344  9.93986]$$
+$$[4.93344, 9.93986]$$
 
 
 Mixing proportion:
@@ -147,7 +147,7 @@ $$\begin{matrix} 1.80233  & 0.419065\\
 Group 2 
 
 Mean vector:
-$$[1.01969 0.630914]$$
+$$[1.01969, 0.630914]$$
 
 Mixing proportion:
 $$0.44$$
@@ -172,8 +172,6 @@ $$\Sigma_1 =\begin{matrix}1 & 0\\
 Group 2:
 $$\pi_1 = 0.6$$
 $$\mu_1 = [5,10]$$
-$$\Sigma_1 =  \begin{matrix}2 & 0.5\\
-0.5& 2\\
-\end{matrix}$$
+$$\Sigma_1 =  \begin{matrix}2 & 0.5\\0.5& 2\\ \end{matrix}$$
 
 We can see that the true model parameters are very close to the estimated model parameters. Additionally, classification was perfect with an ARI of 1.
