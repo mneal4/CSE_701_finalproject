@@ -29,7 +29,9 @@ Let $x_1,...x_n$ represent our p-dimensional observations. Let $z_{ig}$ represen
 E Step:
 Given the model parameters calculate the probability of observation i belong to group g, using Bayesian statistics. This is done via the following formula:
 
-$$\hat{z}_{ig} = \frac{\hat{\pi}_g \phi(x_i|\hat{\mu}_g,\hat{\Sigma}_g)}{\sum_{h=1}^{G}\hat{\pi}_g \phi(x_i|\hat{\mu}_h,\hat{\Sigma}_h)}$$
+```math
+\hat{z}_{ig} = \frac{\hat{\pi}_g \phi(x_i|\hat{\mu}_g,\hat{\Sigma}_g)}{\sum_{h=1}^{G}\hat{\pi}_g \phi(x_i|\hat{\mu}_h,\hat{\Sigma}_h)}
+```
 
 Once cluster memberships are estimated then maximization of the log likelihood can be performed by obtaining the following MLE's.
 
