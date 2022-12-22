@@ -12,7 +12,7 @@ Model-based clustering uses finite mixture models to classify observations. Fini
 
 $$f(x|\vartheta) = \sum_{g=1}^{G} \pi_g f_g(x|\theta_g)$$,
 
-where $\pi_g$ are the mixing proportions such that $\sum_{g=1}^{G} \pi_g =1$ and $f_{g}(x|\theta_{g})$ are the component densities.
+where $\pi_g$ are the mixing proportions such that $$\sum_{g=1}^{G} \pi_g =1$$ and $f_{g}(x|\theta_{g})$ are the component densities.
 
 The EM algorithm is used to estimate these mixture models. The EM is a natural choice due to the presence of latent variables (cluster memberships).
 
@@ -20,7 +20,7 @@ The EM algorithm is used to estimate these mixture models. The EM is a natural c
 
 The EM algorithm performs maximum likelihood estimation in the presence of missing data. In this case the missing data is cluster memberships and the complete data log-likelihood is:
 
-$l(\vartheta) = \sum_{i=1}^n log \sum_{g=1}^G [\pi_g*\phi(x_i|\mu_g,\Sigma_g)]$.
+$$l(\vartheta) = \sum_{i=1}^n log \sum_{g=1}^G [\pi_g*\phi(x_i|\mu_g,\Sigma_g)]$$.
 
 The algorithm iterates between two steps in order to estimate cluster memberships and maximize the log-likelihood above. The first step is the E step, detailed below.
 
@@ -29,17 +29,17 @@ Let $x_1,...x_n$ represent our p-dimensional observations. Let $z_{ig}$ represen
 E Step:
 Given the model parameters calculate the probability of observation i belong to group g, using Bayesian statistics. This is done via the following formula:
 
-$\hat{z}_{ig} = \frac{\hat{\pi}_g \phi(x_i|\hat{\mu}_g,\hat{\Sigma}_g)}{\sum_{h=1}^G\hat{\pi}_g \phi(x_i|\hat{\mu}_h,\hat{\Sigma}_h)}$
+$$\hat{z}_{ig} = \frac{\hat{\pi}_g \phi(x_i|\hat{\mu}_g,\hat{\Sigma}_g)}{\sum_{h=1}^G\hat{\pi}_g \phi(x_i|\hat{\mu}_h,\hat{\Sigma}_h)}$$
 
 Once cluster memberships are estimated then maximization of the log likelihood can be performed by obtaining the following MLE's.
 
 M Step:
 
-$\hat{\pi}_g = \frac{\sum_{i=1}^n \hat{z}_{ig}}{n}$ 
+$$\hat{\pi}_g = \frac{\sum_{i=1}^n \hat{z}_{ig}}{n}$$
 
-$\hat{\mu}_{g} = \frac{1}{n_g}\sum_{i=1}^n \hat{z}_{ig}x_i$
+$$\hat{\mu}_{g} = \frac{1}{n_g}\sum_{i=1}^n \hat{z}_{ig}x_i$$
 
-$\hat{\Sigma}_g = \frac{1}{n_g}\sum_{i=1}^n \hat{z}_{ig}(x_i-\hat{\mu}_g)(x_i-\hat{\mu}_g)^t$
+$$\hat{\Sigma}_g = \frac{1}{n_g}\sum_{i=1}^n \hat{z}_{ig}(x_i-\hat{\mu}_g)(x_i-\hat{\mu}_g)^t$$
 
 The algorithm then iterates between these two steps until convergence of the log-likelihood is achieved. 
 
@@ -115,7 +115,7 @@ EM Algorithm Results:
 
 zigs: [The output for zigs is shortened here for readability.]
 
-$ \begin{matrix} 0 & 1\\
+$$ \begin{matrix} 0 & 1\\
 0 & 1\\
   . & . \\
 . & . \\
@@ -126,40 +126,40 @@ $ \begin{matrix} 0 & 1\\
 . & . \\
 . & . \\
  1 & 0\\
-\end{matrix}$
+\end{matrix}$$
 
 Group 1 
 
 Mean vector:
-$ [\begin{matrix} 4.93344  & 9.93986\\
-\end{matrix}]$
+$$ [\begin{matrix} 4.93344  & 9.93986\\
+\end{matrix}]$$
 
 
 Mixing proportion:
-$ [\begin{matrix} 0.56\
-\end{matrix}]$
+$$ [\begin{matrix} 0.56\
+\end{matrix}]$$
 
 Covariance matrix:
-$\bigg[\begin{matrix} 1.80233  & 0.419065\\
+$$\bigg[\begin{matrix} 1.80233  & 0.419065\\
 0.419065 & 2.15444 \\
-\end{matrix}\bigg]$
+\end{matrix}\bigg]$$
 
 
 
 Group 2 
 
 Mean vector:
-$ [\begin{matrix} 1.01969   & 0.630914\
-\end{matrix}]$
+$$ [\begin{matrix} 1.01969   & 0.630914\
+\end{matrix}]$$
 
 Mixing proportion:
-$ [\begin{matrix} 0.44\
-\end{matrix}]$
+$$ [\begin{matrix} 0.44\
+\end{matrix}]$$
 
 Covariance matrix:
-$\bigg[\begin{matrix} 0.797828  & -0.0779682\\
+$$\bigg[\begin{matrix} 0.797828  & -0.0779682\\
 -0.0779682 & 0.884848 \\
-\end{matrix}\bigg]$
+\end{matrix}\bigg]$$
 
 ARI: 1.0
 
@@ -167,17 +167,17 @@ ARI: 1.0
 The data used was simulated from a two dimensional, two component Gaussian mixture model. Model specification are found below.
 
 Group 1:
-$\pi_1 = 0.4$
-$\mu_1 = [1,1]$
-$\Sigma_1 = \bigg[ \begin{matrix}1 & 0\\
+$$\pi_1 = 0.4$$
+$$\mu_1 = [1,1]$$
+$$\Sigma_1 = \bigg[ \begin{matrix}1 & 0\\
 0& 1\\
-\end{matrix}\bigg]$
+\end{matrix}\bigg]$$
 
 Group 2:
-$\pi_1 = 0.6$
-$\mu_1 = [5,10]$
-$\Sigma_1 = \bigg[ \begin{matrix}2 & 0.5\\
+$$\pi_1 = 0.6$$
+$$\mu_1 = [5,10]$$
+$$\Sigma_1 = \bigg[ \begin{matrix}2 & 0.5\\
 0.5& 2\\
-\end{matrix}\bigg]$
+\end{matrix}\bigg]$$
 
 We can see that the true model parameters are very close to the estimated model parameters. Additionally, classification was perfect with an ARI of 1.
