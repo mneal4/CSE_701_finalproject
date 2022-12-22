@@ -138,9 +138,11 @@ Mixing proportion:
 $$0.56$$
 
 Covariance matrix:
-$$\begin{matrix} 1.80233  & 0.419065\\
+```math
+\bigg[\begin{matrix} 1.80233  & 0.419065\\
 0.419065 & 2.15444 \\
-\end{matrix}$$
+\end{matrix}\bigg]
+```math
 
 
 
@@ -153,9 +155,11 @@ Mixing proportion:
 $$0.44$$
 
 Covariance matrix:
-$$\begin{matrix} 0.797828  & -0.0779682\\
+```math
+\bigg[\begin{matrix} 0.797828  & -0.0779682\\
 -0.0779682 & 0.884848 \\
-\end{matrix}$$
+\end{matrix}\bigg]
+```
 
 ARI: 1.0
 
@@ -166,9 +170,7 @@ Group 1:
 ```math
 \pi_1 = 0.4
 \mu_1 = [1,1]
-\Sigma_1 = \bigg[\begin{matrix}1 & 0\\
-0& 1\\
-\end{matrix}\bigg]
+\Sigma_1 = \bigg[\begin{matrix}1 & 0\\0& 1\\\end{matrix}\bigg]
 ```
 
 Group 2:
