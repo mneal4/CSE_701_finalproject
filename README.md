@@ -10,7 +10,7 @@ This program implements the EM algorithm in order to perform Gaussian mixture mo
 
 Model-based clustering uses finite mixture models to classify observations. Finite mixture models arise from the assumption that a population contains sub-populations that can be modelled by a finite number of densities. A random vector X belongs to finite mixture model if, for all x ⊂ X we can write the density as
 
-$f(x|\vartheta) = \sum_{g=1}^{G} \pi_g f_g(x|\theta_g)$,
+$$f(x|\vartheta) = \sum_{g=1}^{G} \pi_g f_g(x|\theta_g)$$,
 
 where $\pi_g$ are the mixing proportions such that $\sum_{g=1}^{G} \pi_g =1$ and $f_{g}(x|\theta_{g})$ are the component densities.
 
