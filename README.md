@@ -131,13 +131,11 @@ $$ \begin{matrix} 0 & 1\\
 Group 1 
 
 Mean vector:
-$$\begin{matrix} 4.93344  & 9.93986\\
-\end{matrix}$$
+$$[4.93344  9.93986]$$
 
 
 Mixing proportion:
-$$\begin{matrix} 0.56\
-\end{matrix}$$
+$$0.56$$
 
 Covariance matrix:
 $$\begin{matrix} 1.80233  & 0.419065\\
@@ -149,12 +147,10 @@ $$\begin{matrix} 1.80233  & 0.419065\\
 Group 2 
 
 Mean vector:
-$$\begin{matrix} 1.01969   & 0.630914\
-\end{matrix}$$
+$$[1.01969 0.630914]$$
 
 Mixing proportion:
-$$\begin{matrix} 0.44\
-\end{matrix}$$
+$$0.44$$
 
 Covariance matrix:
 $$\begin{matrix} 0.797828  & -0.0779682\\
