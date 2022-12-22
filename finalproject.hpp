@@ -7,7 +7,8 @@ using namespace std;
 
 /**
  * @brief Class for matrix operations.
- *
+ * Please note that much of the matrix class came from lecture notes.
+ * Up until line 168 comes from lecture notes, after that are functions I added.
  */
 class matrix
 {
@@ -86,7 +87,7 @@ public:
     inline static invalid_argument incompatible_sizes_multiply = invalid_argument("Two matrices can only be multiplied if the number of columns in the first matrix is equal to the number of rows in the second matrix!");
 
     // ***************************************** Overloaded Operators for Matrix Arithmetic ************************************************
-    // Please note that these overloaded operators come from the lecture notes/.
+    // Please note that these overloaded operators come from the lecture notes.
 
     /**
      * @brief Friend function to print matrix.
