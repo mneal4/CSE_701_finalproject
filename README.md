@@ -29,13 +29,13 @@ Let $x_1,...x_n$ represent our p-dimensional observations. Let $z_{ig}$ represen
 E Step:
 Given the model parameters calculate the probability of observation i belong to group g, using Bayesian statistics. This is done via the following formula:
 
-$$\hat{z}_{ig} = \frac{\hat{\pi}_g \phi(x_i|\hat{\mu}_g,\hat{\Sigma}_g)}{\sum_{h=1}^G\hat{\pi}_g \phi(x_i|\hat{\mu}_h,\hat{\Sigma}_h)}$$
+$$\hat{z}_{ig} = \frac{\hat{\pi}_g \phi(x_i|\hat{\mu}_g,\hat{\Sigma}_g)}{\sum_{h=1}^{G}\hat{\pi}_g \phi(x_i|\hat{\mu}_h,\hat{\Sigma}_h)}$$
 
 Once cluster memberships are estimated then maximization of the log likelihood can be performed by obtaining the following MLE's.
 
 M Step:
 
-$$\hat{\pi}_g = \frac{\sum_{i=1}^n \hat{z}_{ig}}{n}$$
+$$\hat{\pi}_g = \frac{1}{n}\sum_{i=1}^n \hat{z}_{ig}$$
 
 $$\hat{\mu}_{g} = \frac{1}{n_g}\sum_{i=1}^n \hat{z}_{ig}x_i$$
 
@@ -131,35 +131,35 @@ $$ \begin{matrix} 0 & 1\\
 Group 1 
 
 Mean vector:
-$$ [\begin{matrix} 4.93344  & 9.93986\\
-\end{matrix}]$$
+$$\begin{matrix} 4.93344  & 9.93986\\
+\end{matrix}$$
 
 
 Mixing proportion:
-$$ [\begin{matrix} 0.56\
-\end{matrix}]$$
+$$\begin{matrix} 0.56\
+\end{matrix}$$
 
 Covariance matrix:
-$$\bigg[\begin{matrix} 1.80233  & 0.419065\\
+$$\begin{matrix} 1.80233  & 0.419065\\
 0.419065 & 2.15444 \\
-\end{matrix}\bigg]$$
+\end{matrix}$$
 
 
 
 Group 2 
 
 Mean vector:
-$$ [\begin{matrix} 1.01969   & 0.630914\
-\end{matrix}]$$
+$$\begin{matrix} 1.01969   & 0.630914\
+\end{matrix}$$
 
 Mixing proportion:
-$$ [\begin{matrix} 0.44\
-\end{matrix}]$$
+$$\begin{matrix} 0.44\
+\end{matrix}$$
 
 Covariance matrix:
-$$\bigg[\begin{matrix} 0.797828  & -0.0779682\\
+$$\begin{matrix} 0.797828  & -0.0779682\\
 -0.0779682 & 0.884848 \\
-\end{matrix}\bigg]$$
+\end{matrix}$$
 
 ARI: 1.0
 
@@ -169,15 +169,15 @@ The data used was simulated from a two dimensional, two component Gaussian mixtu
 Group 1:
 $$\pi_1 = 0.4$$
 $$\mu_1 = [1,1]$$
-$$\Sigma_1 = \bigg[ \begin{matrix}1 & 0\\
+$$\Sigma_1 =\begin{matrix}1 & 0\\
 0& 1\\
-\end{matrix}\bigg]$$
+\end{matrix}$$
 
 Group 2:
 $$\pi_1 = 0.6$$
 $$\mu_1 = [5,10]$$
-$$\Sigma_1 = \bigg[ \begin{matrix}2 & 0.5\\
+$$\Sigma_1 =  \begin{matrix}2 & 0.5\\
 0.5& 2\\
-\end{matrix}\bigg]$$
+\end{matrix}$$
 
 We can see that the true model parameters are very close to the estimated model parameters. Additionally, classification was perfect with an ARI of 1.
