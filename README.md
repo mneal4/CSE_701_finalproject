@@ -163,15 +163,15 @@ ARI: 1.0
 The data used was simulated from a two dimensional, two component Gaussian mixture model. Model specification are found below.
 
 Group 1:
-$$\pi_1 = 0.4$$
-$$\mu_1 = [1,1]$$
-$$\Sigma_1 =\begin{matrix}1 & 0\\
+$$ \pi_1 = 0.4$$
+$$ \mu_1 = [1,1]$$
+$$ \Sigma_1 =\begin{matrix}1 & 0\\
 0& 1\\
 \end{matrix}$$
 
 Group 2:
-$$\pi_1 = 0.6$$
-$$\mu_1 = [5,10]$$
-$$\Sigma_1 =  \begin{matrix}2 & 0.5\\0.5& 2\\ \end{matrix}$$
+$$ \pi_1 = 0.6$$
+$$ \mu_1 = [5,10]$$
+$$ \Sigma_1 =  \begin{matrix}2 & 0.5\\0.5& 2\\ \end{matrix}$$
 
 We can see that the true model parameters are very close to the estimated model parameters. Additionally, classification was perfect with an ARI of 1.
