@@ -165,14 +165,22 @@ The data used was simulated from a two dimensional, two component Gaussian mixtu
 Group 1:
 ```math
 \pi_1 = 0.4
+```
+```math
 \mu_1 = [1,1]
+```
+```math
 \Sigma_1 = \bigg[\begin{matrix}1 & 0\\0& 1\\\end{matrix}\bigg]
 ```
 
 Group 2:
 ```math
 \pi_1 = 0.6
+```
+```math
 \mu_1 = [5,10]
+```
+```math
 \Sigma_1 =  \bigg[\begin{matrix}2 & 0.5\\0.5& 2\\ \end{matrix}\bigg]
 ```
 We can see that the true model parameters are very close to the estimated model parameters. Additionally, classification was perfect with an ARI of 1.
