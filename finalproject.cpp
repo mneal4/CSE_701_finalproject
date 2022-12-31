@@ -350,7 +350,7 @@ public:
      * @param rows
      * @return Returns random soft classifications.
      */
-    matrix random_soft(uint64_t rows);
+    matrix random_soft(uint64_t rows, uint64_t G, uint64_t seedval);
     /**
      * @brief Function to implement the EM algorithm.
      *
@@ -1124,8 +1124,8 @@ matrix random_soft(uint64_t rows, uint64_t G)
 {
     matrix v(rows, G);
     double row_tot = 0;
-    random_device rd;
-    mt19937_64 mt(rd());
+    // random_device rd;
+    mt19937_64 mt(123);
     uniform_real_distribution<double> urd(0, 1); // As this is a matrix of probabilities all numbers need to be between 0 and 1.
 
     // Rows represent the observations.
@@ -1292,8 +1292,16 @@ double ARI(matrix &classified, matrix &true_class)
     }
 
     // The counting of unique values (next two lines) came from stackoverflow: https://stackoverflow.com/questions/28100712/better-way-of-counting-unique-item
-    std::sort(classified_vec.begin(), classified_vec.end());
-    uint64_t uniqueCount = (uint64_t)(std::unique(classified_vec.begin(), classified_vec.end()) - classified_vec.begin());
+    sort(classified_vec.begin(), classified_vec.end());
+    uint64_t uniqueCount = 1;
+    for (uint64_t s = 1; s <= classified.get_rows(); s++)
+    {
+        if (classified_vec[s] - classified_vec[s - 1] > 0)
+        {
+            uniqueCount += 1;
+        }
+    }
+    // uint64_t uniqueCount = (uint64_t)(std::unique(classified_vec.begin(), classified_vec.end()) - classified_vec.begin());
 
     // Count the unique values int the true vector to get the true number of groups.
     vector<double> true_vec;
@@ -1304,7 +1312,14 @@ double ARI(matrix &classified, matrix &true_class)
     }
     // The counting of unique values (next two lines) came from stackoverflow: https://stackoverflow.com/questions/28100712/better-way-of-counting-unique-item
     std::sort(true_vec.begin(), true_vec.end());
-    uint64_t uniqueCount2 = (uint64_t)(std::unique(true_vec.begin(), true_vec.end()) - true_vec.begin());
+    uint64_t uniqueCount2 = 1;
+    for (uint64_t s = 1; s <= classified.get_rows(); s++)
+    {
+        if (true_vec[s] - true_vec[s - 1] > 0)
+        {
+            uniqueCount2 += 1;
+        }
+    }
 
     // Need to obtain the contingency table in order to calculate ARI.
     matrix count_val(uniqueCount, uniqueCount2);
@@ -1470,7 +1485,7 @@ int main(int argc, char *argv[])
     // Read in data, this will occur in two steps.
     // Read data into a string separating all values by commas.
     // Then read_numbers can be used to read string into a vector based on commas.
-    int i = 0;
+    uint64_t i = 0;
     if (file.is_open())
     {
         while (getline(file, line))
@@ -1558,24 +1573,24 @@ int main(int argc, char *argv[])
         // cout << classified;
 
         // Below code prints to output
-        vector<uint64_t> classified_vev;
-        for (uint64_t i = 0; i < data2.get_rows(); i++)
+        vector<double> classified_vev;
+        for (uint64_t p = 0; p < data2.get_rows(); p++)
         {
-            classified_vev.push_back(classified(i, 0));
+            classified_vev.push_back(classified(p, 0));
         }
         string filename3 = argv[4];
-        ofstream output(filename3);
-        if (!output.is_open()) // Error checking comes from lecture notes.
+        ofstream output3(filename3);
+        if (!output3.is_open()) // Error checking comes from lecture notes.
         {
             cout << "Error opening output file!";
             return -1;
         }
 
-        for (uint64_t i = 0; i < data2.get_rows(); i++)
+        for (uint64_t m = 0; m < data2.get_rows(); m++)
         {
-            output << classified_vev[i] << '\n';
+            output3 << classified_vev[m] << '\n';
         }
-        output.close();
+        output3.close();
 
         // Below code is if true classes are provided.
         if (argc == 5) // If true class data is provided then we can calculate ARI.
