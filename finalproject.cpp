@@ -761,7 +761,8 @@ matrix random_soft(uint64_t rows, uint64_t G)
 {
     matrix v(rows, G);
     double row_tot = 0;
-    mt19937_64 mt(123);
+    random_device rd;
+    mt19937_64 mt(rd());
     uniform_real_distribution<double> urd(0, 1); // As this is a matrix of probabilities all numbers need to be between 0 and 1.
 
     // Rows represent the observations.
