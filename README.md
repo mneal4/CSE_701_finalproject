@@ -95,18 +95,16 @@ This is a derived class from the matrix class to allow the functions in this cla
 
 ## Running the Program
 
-The user has three options when running the program. The first is that no arguments are provided, in this case, a description of the program will be printed. The second is when the user has data they want to cluster on but they do not have the true classifications to compare to, in which case, the following four inputs (executable + three user-defined inputs) are needed in the following order.
-1. Executable name (i.e. ./finalproject)
-2. The data (.csv file) you are clustering on (these must be numeric)
-3. The number of clusters (this must be a positive integer)
-4. Name of the file you want to export the estimated clusters to (i.e. output.txt)
+The user has three options when running the program. The first is that no arguments are provided, in this case, a description of the program will be printed. The second is when the user has data they want to cluster on but they do not have the true classifications to compare to, in which case, the following three inputs are needed in the following order.
+1. The data (.csv file) you are clustering on (these must be numeric)
+2. The number of clusters (this must be a positive integer)
+3. Name of the file you want to export the estimated clusters to (i.e. output.txt)
 
-If the user does have the true clusters than five inputs (executable + four user-defined inputs) are needed, as follows in the following order.
-1. Executable name (i.e. ./finalproject)
-2. The data (.csv file) you are clustering on (these must be numeric)
-3. The number of clusters (this must be a positive integer)
-4. The data file (.csv) containing the true clusters
-5. Name of the file you want to export the estimated clusters to (i.e. output.txt).
+If the user does have the true clusters than four inputs are needed, as follows in the following order.
+1. The data (.csv file) you are clustering on (these must be numeric)
+2. The number of clusters (this must be a positive integer)
+3. The data file (.csv) containing the true clusters
+4. Name of the file you want to export the estimated clusters to (i.e. output.txt).
 
 
 
