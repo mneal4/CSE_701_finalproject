@@ -13,12 +13,12 @@
 #include <stdexcept>
 #include <vector>
 #include <cmath>
-#include <float.h>
+#include <cfloat>
 #include <numbers>
 #include <fstream>
 #include <sstream>
 #include <iomanip>
-#include <inttypes.h>
+#include <cinttypes>
 #include <string>
 #include <random>
 #include "finalproject.hpp"
@@ -60,7 +60,7 @@ matrix::matrix(const uint64_t &_rows, const uint64_t &_cols, const vector<double
 /**
  * @brief Get number of rows from a matrix.
  *
- * @return uint64_t
+ * @return Number of rows.
  */
 uint64_t matrix::get_rows() const
 {
@@ -69,19 +69,19 @@ uint64_t matrix::get_rows() const
 /**
  * @brief Get number of columns from a matrix.
  *
- * @return uint64_t
+ * @return Number of columns.
  */
 uint64_t matrix::get_cols() const
 {
     return cols;
 }
-//******************************************** Overloaded Operators from Lecture Notes.**********************************
+// Overloaded Operators from Lecture Notes.
 /**
  * @brief Allows for accessing matrix elements.
  *
  * @param row
  * @param col
- * @return double&
+ * @return Returns a matrix element.
  */
 double &matrix::operator()(const uint64_t &row, const uint64_t &col)
 {
@@ -92,7 +92,7 @@ double &matrix::operator()(const uint64_t &row, const uint64_t &col)
  *
  * @param row
  * @param col
- * @return const double&
+ * @return Returns a matrix element.
  */
 const double &matrix::operator()(const uint64_t &row, const uint64_t &col) const
 {
@@ -103,7 +103,7 @@ const double &matrix::operator()(const uint64_t &row, const uint64_t &col) const
  *
  * @param out
  * @param m
- * @return ostream&
+ * @return Prints out matrix.
  */
 ostream &operator<<(ostream &out, const matrix &m)
 {
@@ -121,7 +121,7 @@ ostream &operator<<(ostream &out, const matrix &m)
  * @brief Overloaded operator for matrix addition.
  *
  * @param b
- * @return matrix
+ * @return Returns the resulting matrix from addition.
  */
 matrix matrix::operator+(const matrix &b)
 {
@@ -138,7 +138,7 @@ matrix matrix::operator+(const matrix &b)
  *
  * @param a
  * @param b
- * @return matrix
+ * @return Returns resulting matrix.
  */
 matrix operator+=(matrix &a, const matrix &b)
 {
@@ -149,7 +149,7 @@ matrix operator+=(matrix &a, const matrix &b)
  * @brief Overloaded operator for negation of a matrix.
  *
  * @param m
- * @return matrix
+ * @return Returns resulting matrix.
  */
 matrix operator-(const matrix &m)
 {
@@ -163,7 +163,7 @@ matrix operator-(const matrix &m)
  * @brief Overloaded operator for matrix subtraction.
  *
  * @param b
- * @return matrix
+ * @return Returns resulting matrix.
  */
 matrix matrix::operator-(const matrix &b)
 {
@@ -180,7 +180,7 @@ matrix matrix::operator-(const matrix &b)
  *
  * @param a
  * @param b
- * @return matrix
+ * @return Returns resulting matrix.
  */
 matrix operator-=(matrix &a, const matrix &b)
 {
@@ -192,7 +192,7 @@ matrix operator-=(matrix &a, const matrix &b)
  * @brief Overloaded operator for matrix multiplication.
  *
  * @param b
- * @return matrix
+ * @return Returns resulting matrix.
  */
 matrix matrix::operator*(const matrix &b)
 {
@@ -209,7 +209,7 @@ matrix matrix::operator*(const matrix &b)
  * @brief Overloaded operator for scalar multiplication.
  *
  * @param s
- * @return matrix
+ * @return Returns resulting matrix.
  */
 matrix matrix::operator*(const double &s)
 {
@@ -223,7 +223,7 @@ matrix matrix::operator*(const double &s)
  * @brief Overloaded operator for scalar division.
  *
  * @param s
- * @return matrix
+ * @return Returns resulting matrix.
  */
 matrix matrix::operator/(const double &s)
 {
@@ -238,7 +238,7 @@ matrix matrix::operator/(const double &s)
  *
  * @param s
  * @param m
- * @return matrix
+ * @return Returns resulting matrix.
  */
 matrix operator*(const double &s, const matrix &m)
 {
@@ -253,15 +253,15 @@ matrix operator*(const double &s, const matrix &m)
  *
  * @param m
  * @param s
- * @return matrix
+ * @return Returns resulting matrix.
  */
 matrix operator*(const matrix &m, const double &s)
 {
     return s * m;
 }
 
-//*********************************************** End of Matrix Class Functions from Lecture Notes*******************************
-// The follow functions were added by me.
+// End of Matrix Class Functions from Lecture Notes
+//  The follow functions were added by me.
 
 /**
  * @brief Calculates the determinant of a matrix. This was adapted from my first project.
@@ -269,7 +269,7 @@ matrix operator*(const matrix &m, const double &s)
  * @param rows
  * @param cols
  * @param m
- * @return double
+ * @return Returns the determinant of a matrix as a double.
  */
 double determinant(uint64_t rows, uint64_t cols, const matrix &m)
 {
@@ -325,7 +325,7 @@ double determinant(uint64_t rows, uint64_t cols, const matrix &m)
  *
  * @param m
  * @param row
- * @return matrix
+ * @return Returns row matrix.
  */
 
 matrix extract_row(const matrix &m, uint64_t row)
@@ -343,7 +343,7 @@ matrix extract_row(const matrix &m, uint64_t row)
  *
  * @param m
  * @param col
- * @return matrix
+ * @return Returns a column matrix.
  */
 matrix extract_col(const matrix &m, uint64_t col)
 {
@@ -363,7 +363,7 @@ matrix extract_col(const matrix &m, uint64_t col)
  * @param m
  * @param p
  * @param q
- * @return matrix
+ * @return Returns a cofactor matrix based on p and q.
  */
 matrix cofactor(uint64_t rows, uint64_t cols, const matrix &m, uint64_t p, uint64_t q)
 {
@@ -395,12 +395,12 @@ matrix cofactor(uint64_t rows, uint64_t cols, const matrix &m, uint64_t p, uint6
  * @brief Finds the inverse of a matrix.
  * The calculation of the adjoint comes from https://www.geeksforgeeks.org/adjoint-inverse-matrix/ with some modifications.
  * @param m
- * @return matrix
+ * @return Returns the inverse of a matrix.
  */
 matrix inverse(const matrix &m)
 {
 
-    int sign = 1;
+    int64_t sign = 1;
     uint64_t rows = m.get_rows();
     uint64_t cols = m.get_cols();
     matrix cofact(rows, cols);
@@ -439,7 +439,7 @@ matrix inverse(const matrix &m)
  * @param rows
  * @param cols
  * @param m
- * @return matrix
+ * @return Returns a mean matrix.
  */
 matrix mean(uint64_t rows, uint64_t cols, const matrix &m)
 {
@@ -464,7 +464,7 @@ matrix mean(uint64_t rows, uint64_t cols, const matrix &m)
  * @param rows
  * @param cols
  * @param m
- * @return matrix
+ * @return Returns a covariance matrix.
  */
 matrix covariance_matrix(uint64_t rows, uint64_t cols, const matrix &m)
 {
@@ -497,7 +497,7 @@ matrix covariance_matrix(uint64_t rows, uint64_t cols, const matrix &m)
  * @param rows
  * @param cols
  * @param m
- * @return matrix
+ * @return Returns the transpose of a matrix.
  */
 matrix transpose(uint64_t rows, uint64_t cols, const matrix &m)
 {
@@ -513,16 +513,16 @@ matrix transpose(uint64_t rows, uint64_t cols, const matrix &m)
 
     return transpose_mat; // Return
 }
-//********************************************** End of Matrix Class Functions.***************************************
+// End of Matrix Class Functions.
 
-//********************************************* Functions for the EMalgo class.**************************************
+// Functions for the EMalgo class.
 /**
  * @brief Calculates the density of a multivariate normal.
  *
  * @param data
  * @param mu
  * @param cov
- * @return matrix
+ * @return Returns a matrix containing the density of a multivariate normal.
  */
 matrix dmvnorm(matrix &data, matrix &mu, matrix &cov)
 {
@@ -567,7 +567,7 @@ matrix dmvnorm(matrix &data, matrix &mu, matrix &cov)
  *
  * @param rows
  * @param cols
- * @return matrix
+ * @return Returns a zero matrix.
  */
 matrix zero_matrix(uint64_t rows, uint64_t cols)
 {
@@ -590,7 +590,7 @@ matrix zero_matrix(uint64_t rows, uint64_t cols)
  * @param mus
  * @param sigmas
  * @param G
- * @return double
+ * @return Returns a matrix containing the complete data log-likelihood.
  */
 double compute_log_likelihood(matrix &data, vector<matrix> &pigs, vector<matrix> &mus, vector<matrix> &sigmas, uint64_t G)
 {
@@ -619,7 +619,7 @@ double compute_log_likelihood(matrix &data, vector<matrix> &pigs, vector<matrix>
  * @param G
  * @param rows
  * @param cols
- * @return vector<matrix>
+ * @return Returns a vector of matrices.
  */
 vector<matrix> vec_mat(uint64_t G, uint64_t rows, uint64_t cols)
 {
@@ -644,7 +644,7 @@ vector<matrix> vec_mat(uint64_t G, uint64_t rows, uint64_t cols)
  * @param mus
  * @param sigmas
  * @param G
- * @return matrix
+ * @return Returns a matrix containing soft classifications.
  */
 matrix e_step(matrix &data, vector<matrix> &pigs, vector<matrix> &mus, vector<matrix> &sigmas, uint64_t G)
 {
@@ -698,10 +698,10 @@ matrix e_step(matrix &data, vector<matrix> &pigs, vector<matrix> &mus, vector<ma
  * @param mus
  * @param sigmas
  * @param G
- * @return matrix
+ * @return Matrices are updated but nothing is returned.
  */
 
-matrix m_step(matrix &data, matrix &zigs, vector<matrix> &pigs, vector<matrix> &mus, vector<matrix> &sigmas, uint64_t G)
+void m_step(matrix &data, matrix &zigs, vector<matrix> &pigs, vector<matrix> &mus, vector<matrix> &sigmas, uint64_t G)
 {
     // the pigs, mus, sigmas that are read in here should just be 0 matrices
     matrix ngs(G, 1);
@@ -748,7 +748,6 @@ matrix m_step(matrix &data, matrix &zigs, vector<matrix> &pigs, vector<matrix> &
             sigmas[g] = sigmas[g] + zigs(i, g) * (transpose(1, data.get_cols(), ztemp) * ztemp) / ngs(g, 0);
         }
     }
-    return temp;
 }
 
 /**
@@ -756,7 +755,7 @@ matrix m_step(matrix &data, matrix &zigs, vector<matrix> &pigs, vector<matrix> &
  *
  * @param rows
  * @param G
- * @return matrix
+ * @return Returns random soft classifications.
  */
 matrix random_soft(uint64_t rows, uint64_t G)
 {
@@ -806,7 +805,7 @@ matrix random_soft(uint64_t rows, uint64_t G)
  * @param mus
  * @param sigmas
  * @param G
- * @return matrix
+ * @return Returns estimated soft classifications.
  */
 
 matrix EM(matrix &data, vector<matrix> &pigs, vector<matrix> &mus, vector<matrix> &sigmas, uint64_t G)
@@ -867,7 +866,7 @@ matrix EM(matrix &data, vector<matrix> &pigs, vector<matrix> &mus, vector<matrix
  * @brief Function to transform the soft classifications (zigs) to hard classifications.
  *
  * @param zigs
- * @return matrix
+ * @return Returns hard classifications as a matrix.
  */
 matrix classify(matrix &zigs)
 {
@@ -898,12 +897,9 @@ matrix classify(matrix &zigs)
 /**
  * @brief Code to calculate binomial coefficients.
  * This function comes from https://www.geeksforgeeks.org/binomial-coefficient-dp-9/
- * I did write my own binomial coefficient function but for reasons I cannot currently explain
- * it stopped working right before I went to submit, thus I used the online resource for a quick fix.
- * I am happy to rewrite this function my own way for the final submission.
  * @param n
  * @param k
- * @return double
+ * @return Returns the binomial coefficient as a double.
  */
 double binomial_coeff(double n, double k)
 {
@@ -920,7 +916,7 @@ double binomial_coeff(double n, double k)
  *
  * @param classified
  * @param true_class
- * @return double
+ * @return Returns ARI as a double.
  */
 double ARI(matrix &classified, matrix &true_class)
 {
@@ -1015,15 +1011,15 @@ double ARI(matrix &classified, matrix &true_class)
     return ARI; // Return ARI.
 }
 
-//**************************************************** End of Functions for EMalgo class. **************************************
+// End of Functions for EMalgo class.
 
-//************************************************** Main function and function to read in data ******************************************
+// Main function and function to read in data
 /**
  * @brief Function to read in comma separated data.
  *
  * @param in
  * @param tot
- * @return vector<double>
+ * @return Returns a vector of doubles containing read in information.
  */
 vector<double> read_numbers(const string &in, uint64_t &tot)
 {

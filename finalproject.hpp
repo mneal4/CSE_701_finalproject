@@ -35,14 +35,14 @@ public:
     /**
      * @brief Member function to obtain (but not modify) the number of rows in the matrix.
      * This came from lecture notes.
-     * @return uint64_t
+     * @return Number of rows.
      */
     uint64_t get_rows() const;
 
     /**
      * @brief Member function to obtain (but not modify) the number of columns in the matrix.
      * This came from lecture notes.
-     * @return uint64_t
+     * @return Number of columns.
      */
     uint64_t get_cols() const;
 
@@ -50,7 +50,7 @@ public:
      * @brief Overloaded operator () to access matrix elements WITHOUT range checking,
      * and allows modification of the element.
      * This came from lecture notes.
-     * @return double&
+     * @return Returns a matrix element.
      */
     double &operator()(const uint64_t &, const uint64_t &);
 
@@ -58,7 +58,7 @@ public:
      * @brief Overloaded operator () to access matrix elements WITHOUT range checking,
      * and does not allow modification of the element.
      * This came from lecture notes.
-     * @return double&
+     * @return Returns a matrix element.
      */
     const double &operator()(const uint64_t &, const uint64_t &) const;
 
@@ -86,99 +86,99 @@ public:
      */
     inline static invalid_argument incompatible_sizes_multiply = invalid_argument("Two matrices can only be multiplied if the number of columns in the first matrix is equal to the number of rows in the second matrix!");
 
-    // ***************************************** Overloaded Operators for Matrix Arithmetic ************************************************
+    // Overloaded Operators for Matrix Arithmetic
     // Please note that these overloaded operators come from the lecture notes.
 
     /**
      * @brief Friend function to print matrix.
      *
-     * @return ostream&
+     * @return Prints out matrix.
      */
     friend ostream &operator<<(ostream &, const matrix &);
 
     /**
      * @brief Overloaded binary operator to add to matrices.
      *
-     * @return matrix
+     * @return Returns a resulting matrix from addition.
      */
     matrix operator+(const matrix &);
 
     /**
      * @brief Overloaded binary operator to perform matrix addition and assignment.
      *
-     * @return matrix
+     * @return Returns resulting matrix.
      */
     friend matrix operator+=(matrix &, const matrix &);
 
     /**
      * @brief Overloaded unary operator to negate a matrix.
      *
-     * @return matrix
+     * @return Returns resulting matrix.
      */
     friend matrix operator-(const matrix &);
 
     /**
      * @brief Overloaded binary operator to subtract to matrices.
      *
-     * @return matrix
+     * @return Returns resulting matrix.
      */
     matrix operator-(const matrix &);
 
     /**
      * @brief Overloaded binary operator to perform matrix subtraction and assignment.
      *
-     * @return matrix
+     * @return Returns resulting matrix.
      */
     friend matrix operator-=(matrix &, const matrix &);
 
     /**
      * @brief Overloaded binary operator to multiply two matrices.
      *
-     * @return matrix
+     * @return Returns resulting matrix.
      */
     matrix operator*(const matrix &);
 
     /**
      * @brief Overloaded binary operator to perform scalar multiplication on the right.
      *
-     * @return matrix
+     * @return Returns resulting matrix.
      */
     matrix operator*(const double &);
     /**
      * @brief Overloaded operator to perform scalar division on the right.
      *
-     * @return matrix
+     * @return Returns resulting matrix.
      */
     matrix operator/(const double &);
 
     /**
      * @brief Friend function of overloaded operator to perform scalar multiplication on the right.
      *
-     * @return matrix
+     * @return Returns resulting matrix.
      */
     friend matrix operator*(const matrix &, const double &);
     /**
      * @brief Friend function of overloaded operator to perform scalar multiplication on the left.
      *
-     * @return matrix
+     * @return Returns resulting matrix.
      */
     friend matrix operator*(const double &s, const matrix &m);
 
     // This is the end of matrix functions that came from lecture notes. The remaining functions in this class were added by me.
-    // *********************************************** Extra Matrix Functions ****************************************************
+    //  Extra Matrix Functions
 
     /**
      * @brief Function to extract a row from a matrix.
      *
      * @param row
-     * @return matrix
+     * @return Returns row matrix.
      */
     matrix extract_row(const matrix &, uint64_t row);
     /**
      * @brief Function to extract a column from a matrix.
      *
      * @param col
-     * @return matrix
+     * @return Returns a column matrix.
      */
     matrix extract_col(const matrix &, uint64_t col);
     /**
@@ -186,7 +186,7 @@ public:
      *
      * @param rows
      * @param cols
-     * @return double
+     * @return Returns the determinant of a matrix as a double.
      */
     double determinant(uint64_t rows, uint64_t cols, const matrix &);
     /**
@@ -196,13 +196,13 @@ public:
      * @param cols
      * @param p
      * @param q
-     * @return matrix
+     * @return Returns a cofactor matrix based on p and q.
      */
     matrix cofactor(uint64_t rows, uint64_t cols, const matrix &, uint64_t p, uint64_t q);
     /**
      * @brief Function to calculate the inverse of a matrix, using the adjoint and determinant.
      * This code was adapted from determinant code.
-     * @return matrix
+     * @return Returns the inverse of a matrix.
      */
     matrix inverse(const matrix &);
     /**
@@ -210,7 +210,7 @@ public:
      * The calculation of the adjoint come from https://www.geeksforgeeks.org/adjoint-inverse-matrix/ with some modifications.
      * @param rows
      * @param cols
-     * @return matrix
+     * @return Returns a mean matrix.
      */
     matrix mean(uint64_t rows, uint64_t cols, const matrix &);
     /**
@@ -218,7 +218,7 @@ public:
      *
      * @param rows
      * @param cols
-     * @return matrix
+     * @return Returns a covariance matrix.
      */
     matrix covariance_matrix(uint64_t rows, uint64_t cols, const matrix &);
     /**
@@ -226,7 +226,7 @@ public:
      *
      * @param rows
      * @param cols
-     * @return matrix
+     * @return Returns the transpose of a matrix.
      */
     matrix transpose(uint64_t rows, uint64_t cols, const matrix &);
     /**
@@ -234,10 +234,10 @@ public:
      *
      * @param rows
      * @param cols
-     * @return matrix
+     * @return Returns a zero matrix.
      */
     matrix zero_matrix(uint64_t rows, uint64_t cols);
-    //********************************** End of functions that were added to this class*************************************
+    // End of functions that were added to this class
 
 private:
     /**
@@ -273,7 +273,7 @@ public:
      * @param data
      * @param mu
      * @param cov
-     * @return matrix
+     * @return Returns a matrix containing the density of a multivariate normal.
      */
     matrix dmvnorm(matrix &data, matrix &mu, matrix &cov);
     /**
@@ -284,7 +284,7 @@ public:
      * @param mus
      * @param sigmas
      * @param G
-     * @return double
+     * @return Returns a matrix containing the complete data log-likelihood.
      */
     double compute_log_likelihood(matrix &data, vector<matrix> &pigs, vector<matrix> &mus, vector<matrix> &sigmas, uint64_t G);
     /**
@@ -293,7 +293,7 @@ public:
      * @param G
      * @param rows
      * @param cols
-     * @return vector<matrix>
+     * @return Returns a vector of matrices.
      */
     vector<matrix> vec_mat(uint64_t G, uint64_t rows, uint64_t cols);
     /**
@@ -304,7 +304,7 @@ public:
      * @param mus
      * @param sigmas
      * @param G
-     * @return matrix
+     * @return Returns a matrix containing soft classifications.
      */
     matrix e_step(matrix &data, vector<matrix> &pigs, vector<matrix> &mus, vector<matrix> &sigmas, uint64_t G);
     /**
@@ -316,15 +316,15 @@ public:
      * @param mus
      * @param sigmas
      * @param G
-     * @return matrix
+     * @return Matrices are updated but nothing is returned.
      */
-    matrix m_step(matrix &data, matrix &zigs, vector<matrix> &pigs, vector<matrix> &mus, vector<matrix> &sigmas, uint64_t G);
+    void m_step(matrix &data, matrix &zigs, vector<matrix> &pigs, vector<matrix> &mus, vector<matrix> &sigmas, uint64_t G);
 
     /**
      * @brief Function to provide random soft inital classifications.
      *
      * @param rows
-     * @return matrix
+     * @return Returns random soft classifications.
      */
     matrix random_soft(uint64_t rows);
     /**
@@ -336,14 +336,14 @@ public:
      * @param mus
      * @param sigmas
      * @param G
-     * @return matrix
+     * @return Returns estimated soft classifications.
      */
     matrix EM(matrix &data, matrix &zigs, vector<matrix> &pigs, vector<matrix> &mus, vector<matrix> &sigmas, uint64_t G);
     /**
      * @brief Function to convert soft classifications to hard classifications
      *
      * @param zigs
-     * @return matrix
+     * @return Returns hard classifications.
      */
     matrix classify(matrix &zigs);
     /**
@@ -351,18 +351,16 @@ public:
      *
      * @param classified
      * @param true_class
-     * @return double
+     * @return Returns ARI as a double.
      */
     double ARI(matrix &classified, matrix &true_class);
     /**
      * @brief Function to calculate the binomial coefficients needed to calculate the ARI.
      * This function comes from https://www.geeksforgeeks.org/binomial-coefficient-dp-9/
-     * I did write my own binomial coefficient function but for reasons I cannot currently explain
-     * it stopped working right before I went to submit, thus I used the online resource for a quick fix.
-     * I am happy to revisit my own code for this function for the final submission.
+
      * @param n
      * @param k
-     * @return double
+     * @return Returns the binomial coefficient as a double.
      */
     double binomial_coeff(double n, double k);
 };

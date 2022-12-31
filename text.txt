@@ -1,25 +1,19 @@
-********************************************************************************************************
-This program performs the EM algorithm for Gaussian mixture model-based clustering. 
-To test this program, the user must provide four or five inputs from the command line. These inputs (and
-the order in which they should be provided) are listed below.
+*
+This program performs the EM algorithm for Gaussian mixture model-based clustering. To test this program, the user must provide three or four inputs from the command line. These inputs (and the order in which they should be provided) are listed below.
+If 3 inputs are provided
+1. The data (.csv file) you are clustering on (these must be numeric)
+2. The number of clusters (this must be a positive integer)
+3. Name of the file you want to export the estimated clusters to (i.e. output.txt)
+
 If 4 inputs are provided
-1. Executable name (i.e. ./EMalgo)
-2. The data (.csv file) you are clustering on (these must be numeric)
-3. The number of clusters (this must be a positive integer)
+1. The data (.csv file) you are clustering on (these must be numeric)
+2. The number of clusters (this must be a positive integer)
+3. The data file (.csv) containing the true clusters
 4. Name of the file you want to export the estimated clusters to (i.e. output.txt)
 
-If 5 inputs are provided
-1. Executable name (i.e. ./EMalgo)
-2. The data (.csv file) you are clustering on (these must be numeric)
-3. The number of clusters (this must be a positive integer)
-4. The data file (.csv) containing the true clusters
-5. Name of the file you want to export the estimated clusters to (i.e. output.txt)
-
 If the user does not include valid inputs an error message will appear and the program will be terminated.
-*********************************************************************************************************
-This program uses a matrix class to allow for matrix operations to be performed and a derived class for 
-the EM algorithm. The derived class adds the following functions to allow for the EM algorithm to be 
-implemented.
+*
+This program uses a matrix class to allow for matrix operations to be performed and a derived class for the EM algorithm. The derived class adds the following functions to allow for the EM algorithm to be implemented.
 A function to compute the density of a multivariate normal.
 A function to compute the log likelihood of a Gaussian mixture model.
 A function for the E step.
@@ -28,5 +22,5 @@ A function for random soft initializations.
 An EM function to perform the algorithm.
 A function to classify observations based on the soft classifications provided by the EM.
 A function to calculate ARI.
-**********************************************************************************************************
+*
 Have fun!
