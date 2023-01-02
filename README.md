@@ -121,7 +121,7 @@ Output:
 
 EM Algorithm Results (results may vary slightly due to random initialization scheme): 
 
-Estimated Memberships: [The output for zigs is shortened here for readability.]
+Estimated Memberships: [The output is shortened here for readability.]
 
 $$ \begin{matrix} 0 & 1\\
 0 & 1\\
