@@ -1,5 +1,5 @@
 /**
- * @file finalproject.cpp
+ * @file EMalgo.cpp
  * @author Mackenzie Neal (nealm6@mcmaster.ca)
  * @brief A program to perform the EM algorithm for Gaussian mixture model-based clustering
  * @version 0.1
@@ -1285,36 +1285,38 @@ double ARI(matrix &classified, matrix &true_class)
 {
     // Count the number of unique values in classified to get estimated number of groups.
     vector<double> classified_vec;
+    vector<double> sorted_classified_vec;
     for (uint64_t i = 0; i < classified.get_rows(); i++)
     {
         classified_vec.push_back(classified(i, 0));
+        sorted_classified_vec.push_back(classified(i, 0));
     }
 
-    // The counting of unique values (next two lines) came from stackoverflow: https://stackoverflow.com/questions/28100712/better-way-of-counting-unique-item
-    sort(classified_vec.begin(), classified_vec.end());
+    // The counting of unique values
+    sort(sorted_classified_vec.begin(), sorted_classified_vec.end()); // Need a sorted vector to count unique entries, however we want to calculate ARI on unsorted vector
+
     uint64_t uniqueCount = 1;
-    for (uint64_t s = 0; s <= classified.get_rows(); s++)
+    for (uint64_t s = 1; s <= classified.get_rows(); s++)
     {
-        if (classified_vec[s] - classified_vec[s - 1] > 0)
+        if (sorted_classified_vec[s] - sorted_classified_vec[s - 1] != 0)
         {
             uniqueCount += 1;
         }
     }
-    // uint64_t uniqueCount = (uint64_t)(std::unique(classified_vec.begin(), classified_vec.end()) - classified_vec.begin());
 
     // Count the unique values int the true vector to get the true number of groups.
     vector<double> true_vec;
+    vector<double> sorted_true_vec;
     for (uint64_t i = 0; i < true_class.get_rows(); i++)
     {
-
         true_vec.push_back(true_class(i, 0));
+        sorted_true_vec.push_back(true_class(i, 0));
     }
-    // The counting of unique values (next two lines) came from stackoverflow: https://stackoverflow.com/questions/28100712/better-way-of-counting-unique-item
-    std::sort(true_vec.begin(), true_vec.end());
+    sort(sorted_true_vec.begin(), sorted_true_vec.end()); // Need a sorted vector to count unique entries, however we want to calculate ARI on unsorted vector
     uint64_t uniqueCount2 = 1;
-    for (uint64_t s = 0; s <= classified.get_rows(); s++)
+    for (uint64_t s = 1; s <= classified.get_rows(); s++)
     {
-        if (true_vec[s] - true_vec[s - 1] > 0)
+        if (sorted_true_vec[s] - sorted_true_vec[s - 1] != 0)
         {
             uniqueCount2 += 1;
         }

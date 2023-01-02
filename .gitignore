@@ -1,5 +1,8 @@
 # Ignore Visual Studio Code configuration folder
 .vscode/
+.vscode/launch.json
+.vscode/settings.json
+.vscode/tasks.json
 # Ignore compiled object files and executables
 *.o
 *.exe
