@@ -1551,7 +1551,7 @@ int main(int argc, char *argv[])
         }
 
         printf("EM Algorithm Results:\n");
-        printf("zigs:\n");
+        printf("zigs (soft classifications):\n");
         matrix zigs(rows, G);
         zigs = EM(data2, pigs, mus, sigmas, G); // Run the EM
         cout << zigs;                           // Print out predicted soft classifications.
