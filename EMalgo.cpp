@@ -1469,7 +1469,7 @@ int main(int argc, char *argv[])
     uint64_t tots = 0;
     // Check if the string is numeric
     string group_num = argv[2];
-    for (std::vector<int>::size_type i = 0; i < group_num.size(); i++) // I'm pretty sure this conversion came from online.
+    for (std::vector<uint64_t>::size_type i = 0; i < group_num.size(); i++) // I'm pretty sure this conversion came from online.
     {
         if (!isdigit(group_num[i]))
         {
