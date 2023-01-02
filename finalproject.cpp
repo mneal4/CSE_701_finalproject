@@ -21,7 +21,6 @@
 #include <cinttypes>
 #include <string>
 #include <random>
-// #include "finalproject.hpp"
 using namespace std;
 
 // Please note that I make use of the matrix class in this project
@@ -1124,8 +1123,8 @@ matrix random_soft(uint64_t rows, uint64_t G)
 {
     matrix v(rows, G);
     double row_tot = 0;
-    // random_device rd;
-    mt19937_64 mt(123);
+    random_device rd;
+    mt19937_64 mt(rd());
     uniform_real_distribution<double> urd(0, 1); // As this is a matrix of probabilities all numbers need to be between 0 and 1.
 
     // Rows represent the observations.
@@ -1294,7 +1293,7 @@ double ARI(matrix &classified, matrix &true_class)
     // The counting of unique values (next two lines) came from stackoverflow: https://stackoverflow.com/questions/28100712/better-way-of-counting-unique-item
     sort(classified_vec.begin(), classified_vec.end());
     uint64_t uniqueCount = 1;
-    for (uint64_t s = 1; s <= classified.get_rows(); s++)
+    for (uint64_t s = 0; s <= classified.get_rows(); s++)
     {
         if (classified_vec[s] - classified_vec[s - 1] > 0)
         {
@@ -1313,7 +1312,7 @@ double ARI(matrix &classified, matrix &true_class)
     // The counting of unique values (next two lines) came from stackoverflow: https://stackoverflow.com/questions/28100712/better-way-of-counting-unique-item
     std::sort(true_vec.begin(), true_vec.end());
     uint64_t uniqueCount2 = 1;
-    for (uint64_t s = 1; s <= classified.get_rows(); s++)
+    for (uint64_t s = 0; s <= classified.get_rows(); s++)
     {
         if (true_vec[s] - true_vec[s - 1] > 0)
         {

@@ -112,8 +112,8 @@ If the user does have the true clusters than four inputs are needed, as follows 
 
 In terminal:
 ```
-clang++ -Wall -Wextra -Wconversion -Wsign-conversion -Wshadow -Wpedantic -std=c++20 finalproject.cpp -o finalproject 
-./finalproject input_sim_data.csv 2 trueclass.csv output.txt
+clang++ -Wall -Wextra -Wconversion -Wsign-conversion -Wshadow -Wpedantic -std=c++20 EMalgo.cpp -o EMalgo 
+./EMalgo input_sim_data.csv 2 trueclass.csv output.txt
 ```
 
 
