@@ -119,7 +119,7 @@ clang++ -Wall -Wextra -Wconversion -Wsign-conversion -Wshadow -Wpedantic -std=c+
 
 Output: 
 
-EM Algorithm Results: 
+EM Algorithm Results (results may vary slightly due to random initialization scheme): 
 
 zigs: [The output for zigs is shortened here for readability.]
 
